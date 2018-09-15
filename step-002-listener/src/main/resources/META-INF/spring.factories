@@ -1,0 +1,3 @@
+org.springframework.context.ApplicationListener=com.springboot.tutorial.listener.ApplicationEventListener,\
+  com.springboot.tutorial.listener.StartedEventListener,\
+  com.springboot.tutorial.listener.SampleEventListener
