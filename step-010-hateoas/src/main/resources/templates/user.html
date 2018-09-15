@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="hidden" name="userId" id="userId" value="-1"/>
+<table id="userForm">
+    <tr>
+        <td>username:</td>
+        <td><input type="text" name="textUsername" id="textUsername" value="samanalishiri"/></td>
+    </tr>
+    <tr>
+        <td>password:</td>
+        <td><input type="password" name="textPassword" id="textPassword" value="60140150"/></td>
+    </tr>
+    <tr>
+        <td>email:</td>
+        <td><input type="email" name="textEmail" id="textEmail" value="samanalishiri@gmail.com"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="button" name="buttonSave" id="buttonSave" value="Save"/></td>
+    </tr>
+</table>
+
+<table id="users" border="2" width="50%">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>E-mail</th>
+        <th>Load</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody id="usersBody">
+
+    </tbody>
+</table>
+</body>
+</html>
+<script type="text/javascript" th:src="@{/js/jsonUtils.js}"></script>
+<script type="text/javascript" th:src="@{/js/ajaxRequest.js}"></script>
+<script type="text/javascript" th:src="@{/js/userTable.js}"></script>
+<script type="text/javascript" th:src="@{/js/user.js}"></script>
