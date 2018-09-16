@@ -1,6 +1,6 @@
-package com.saman.springboot.dataaccess.h2.repository;
+package com.springboot.tutorial.h2.repository;
 
-import com.saman.springboot.dataaccess.h2.domain.User;
+import com.springboot.tutorial.h2.domain.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**

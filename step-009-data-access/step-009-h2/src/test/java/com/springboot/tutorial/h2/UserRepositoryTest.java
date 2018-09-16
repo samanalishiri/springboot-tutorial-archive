@@ -1,7 +1,7 @@
-package com.saman.springboot.dataaccess.h2;
+package com.springboot.tutorial.h2;
 
-import com.saman.springboot.dataaccess.h2.domain.User;
-import com.saman.springboot.dataaccess.h2.repository.UserRepository;
+import com.springboot.tutorial.h2.domain.User;
+import com.springboot.tutorial.h2.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

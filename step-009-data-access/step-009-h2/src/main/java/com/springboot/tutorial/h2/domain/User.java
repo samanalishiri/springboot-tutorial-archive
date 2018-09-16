@@ -1,4 +1,4 @@
-package com.saman.springboot.dataaccess.h2.domain;
+package com.springboot.tutorial.h2.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
