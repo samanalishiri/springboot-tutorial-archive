@@ -1,0 +1,2 @@
+access to app = http://localhost:8080/client/dashboard
+access to h2 console = http://localhost:8080/console

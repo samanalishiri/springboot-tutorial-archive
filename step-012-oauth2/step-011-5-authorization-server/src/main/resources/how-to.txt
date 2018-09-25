@@ -1,0 +1,5 @@
+
+curl --user clientapp:123456 --data 'grant_type=password&username=user&password=user' -X POST -H 'Content-Type:application/x-www-form-urlencoded' http://localhost:8080/oauth/token
+
+
+curl --user clientapp:123456 --data 'grant_type=password&username=user&password=user' -X POST -H '{"Content-Type":"application/json", "Accept" : "application/json"}'  http://localhost:8080/oauth/token

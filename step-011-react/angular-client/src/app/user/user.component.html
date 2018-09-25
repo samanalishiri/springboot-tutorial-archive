@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>User List</h1>
+  <a [routerLink]="['/user-create']" class="btn btn-info">
+    <span class="glyphicon" aria-hidden="true">Add User</span>
+  </a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username}}</td>
+      <td>{{ user.email }}</td>
+      <td><a [routerLink]="['/user-show', user.id]" class="btn btn-info">Show</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
