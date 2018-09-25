@@ -1,1 +1,0 @@
-INSERT INTO client_user (username, password) VALUES ('user', 'user');
