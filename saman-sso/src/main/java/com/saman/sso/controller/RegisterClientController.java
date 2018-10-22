@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RegisterClientController implements BaseController {
 
     @Override
-    @GetMapping("client/register/view.page")
+    @GetMapping(value = {"client/view.page","/"})
     public String view(){
         return "register_client";
     }
