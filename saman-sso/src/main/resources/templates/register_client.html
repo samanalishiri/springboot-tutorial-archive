@@ -4,11 +4,38 @@
     <meta charset="UTF-8">
     <link href="../webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="/bootstrap-select.min.css" rel="stylesheet"/>
-    <title><span th:text="#{client.register.title}"/></title>
+    <title></title>
 </head>
 <body>
-
-
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1><span th:text="#{client.register.title}"/></h1>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="client_name"><span th:text="#{client.register.form.field.name}"/></label>
+            <input id="client_name" name="client_name" type="text" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="redirect_url"><span th:text="#{client.register.form.field.redirect-url}"/></label>
+            <input id="redirect_url" name="redirect_url" type="text" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="client_type"><span th:text="#{client.register.form.field.type}"/></label>
+            <div>
+                <select id="client_type" class="selectpicker">
+                    <option value="PUBLIC">Public</option>
+                    <option value="CONFIDENTIAL">Confidential</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit"><span th:text="#{form.button.register}"/></button>
+            <button class="btn btn-default" type="button" onclick="javascript: window.location.href='/'">
+                <span th:text="#{form.button.cancel}"/></button>
+        </div>
+    </form>
+</div>
 
 
 </body>
@@ -17,8 +44,6 @@
 <script type="text/javascript" th:src="@{/js/ajax/jsonUtils.js}"></script>
 <script type="text/javascript" th:src="@{/js/ajax/ajaxRequest.js}"></script>
 <script type="text/javascript" th:src="@{/js/client/client.js}"></script>
-
-
 
 <script src="/jquery.min.js"></script>
 <script src="/bootstrap-select.min.js"></script>
