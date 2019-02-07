@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PropertiesProcessor {
+public class AnyHelper {
 
     @Autowired
-    private AnyProperties anyProperties;
+    private Any any;
 
-    public void print() {
-        System.out.println(anyProperties.toString());
+    public Any getAny() {
+        return any;
     }
+
 }

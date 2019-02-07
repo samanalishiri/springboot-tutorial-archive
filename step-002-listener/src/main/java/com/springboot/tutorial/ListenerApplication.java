@@ -1,12 +1,12 @@
-package com.springboot.tutorial.jsp;
+package com.springboot.tutorial;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class ListenerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        new SpringApplication(ListenerApplication.class).run(args);
     }
 }

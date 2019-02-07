@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ProductionService implements AbstractService {
 
     @Override
-    public void print() {
-        System.out.println("profile = " + ProfileName.PRODUCTION);
+    public String getProfile() {
+        return ProfileName.PRODUCTION;
     }
 }

@@ -1,6 +1,6 @@
 package com.springboot.tutorial.listener;
 
-import com.springboot.tutorial.listener.event.SampleEvent;
+import com.springboot.tutorial.event.SampleEvent;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTest {
+public class ListenerTest {
 
     @Autowired
     public ApplicationEventPublisher publisher;

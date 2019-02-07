@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class DevelopmentService implements AbstractService {
 
     @Override
-    public void print() {
-        System.out.println("profile = " + ProfileName.DEVELOPMENT);
+    public String getProfile() {
+        return ProfileName.DEVELOPMENT;
     }
 }

@@ -3,9 +3,9 @@ package com.springboot.tutorial.embedmongo.config;
 import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
-
-import java.io.IOException;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
 @Configuration
 public class MongoConfig {
@@ -15,9 +15,14 @@ public class MongoConfig {
     private static final String DATABASE_NAME = "step009";
 
     @Bean
-    public MongoTemplate mongoTemplate() throws IOException {
+    public MongoDbFactory mongoDbFactory() {
         MongoClient mongoClient = new MongoClient(HOST, PORT);
-        MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, DATABASE_NAME);
+        return new SimpleMongoDbFactory(mongoClient, DATABASE_NAME);
+    }
+
+    @Bean
+    public MongoTemplate mongoTemplate() {
+        MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
         return mongoTemplate;
     }
 }

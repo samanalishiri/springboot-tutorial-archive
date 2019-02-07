@@ -1,4 +1,4 @@
-package com.springboot.tutorial.listener.event;
+package com.springboot.tutorial.event;
 
 import org.springframework.context.ApplicationEvent;
 

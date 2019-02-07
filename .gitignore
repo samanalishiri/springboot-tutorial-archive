@@ -4,3 +4,7 @@ target
 .scannerwork 
 *.log 
 git-setup.bat 
+/.metadata/
+/.metadata/
+bin/
+.sonarlint

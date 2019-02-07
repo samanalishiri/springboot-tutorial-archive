@@ -1,6 +1,6 @@
 package com.springboot.tutorial.listener;
 
-import com.springboot.tutorial.listener.event.SampleEvent;
+import com.springboot.tutorial.event.SampleEvent;
 import org.springframework.context.ApplicationListener;
 
 public class SampleEventListener implements ApplicationListener<SampleEvent> {
