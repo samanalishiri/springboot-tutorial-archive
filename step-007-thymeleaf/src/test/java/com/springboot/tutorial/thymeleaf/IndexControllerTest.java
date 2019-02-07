@@ -1,4 +1,4 @@
-package com.springboot.tutorial.jsp;
+package com.springboot.tutorial.thymeleaf;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ControllerTest {
+public class IndexControllerTest {
 
     @Autowired
     private WebApplicationContext context;
@@ -31,7 +31,7 @@ public class ControllerTest {
     @Test
     public void indexView() throws Exception {
         ModelAndView modelAndView = mvc.perform(get("/")).andReturn().getModelAndView();
-        Assert.assertEquals("index", modelAndView.getViewName());
+        Assert.assertEquals("index.html", modelAndView.getViewName());
     }
 
 }
