@@ -15,7 +15,7 @@ public class User {
 
     private String email;
 
-    public static User create() {
+    public static User createEmpty() {
         return new User();
     }
 

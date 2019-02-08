@@ -11,10 +11,12 @@ import java.io.IOException;
 @Configuration
 public class MongoConfig {
 
+    public static final String MONGO_TEMPLATE = "mongoTemplate";
+
     private static final String HOST = "localhost";
     private static final String DB_NAME = "step009";
 
-    @Bean
+    @Bean(MONGO_TEMPLATE)
     public MongoTemplate mongoTemplate() throws IOException {
         EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
         mongo.setBindIp(HOST);
