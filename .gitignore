@@ -8,3 +8,6 @@ git-setup.bat
 /.metadata/
 bin/
 .sonarlint
+.settings
+.classpath
+.project

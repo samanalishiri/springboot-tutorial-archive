@@ -2,13 +2,15 @@ package com.springboot.tutorial.h2;
 
 import com.springboot.tutorial.h2.domain.User;
 import com.springboot.tutorial.h2.repository.UserRepository;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.Assert;
 
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -18,8 +20,10 @@ import java.util.stream.Stream;
 @DataJpaTest
 public class UserRepositoryTest {
 
+    public final Logger logger = LoggerFactory.getLogger(UserRepositoryTest.class.getSimpleName());
+
     @Autowired
-    private UserRepository repository;
+    public UserRepository repository;
 
     @Test
     public void save() {
@@ -28,8 +32,8 @@ public class UserRepositoryTest {
         Optional<User> result = repository.findById(1L);
         User user = result.get();
 
-        Assert.notNull(user, user.getClass().getSimpleName() + " is null");
-        System.out.println("Test: " + user.toString());
+        Assert.assertNotNull("user is null", user);
+        logger.info(String.format("user: %s", user.toString()));
     }
 
     private Stream<User> createUsers() {

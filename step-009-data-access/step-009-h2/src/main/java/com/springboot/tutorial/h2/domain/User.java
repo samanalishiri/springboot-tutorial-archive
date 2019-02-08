@@ -8,12 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
-/**
- * @author Saman Alishiri
- * @mail samanalishiri@gmail.com
- * @since yyyy-MM-dd
- */
-
 @Entity
 @Table(name = "USER_INFO")
 public class User {
