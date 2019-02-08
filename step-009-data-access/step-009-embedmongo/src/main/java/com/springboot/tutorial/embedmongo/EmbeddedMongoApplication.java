@@ -25,9 +25,9 @@ public class EmbeddedMongoApplication {
 
     @Bean
     @DependsOn(MONGO_TEMPLATE)
-    CommandLineRunner users(UserRepository repository) {
+    CommandLineRunner initDatabase(UserRepository repository) {
 
-        User user = User.createEmpty()
+        User user = User.createEmptyUser()
                 .setId(UUID.randomUUID().toString())
                 .setUsername("Saman")
                 .setPassword("Alishiri")

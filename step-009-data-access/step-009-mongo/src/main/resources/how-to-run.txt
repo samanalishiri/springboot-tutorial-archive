@@ -1,3 +1,0 @@
-windows
-1- download mongodb.zip
-2- run mongod.exe under bin directory
