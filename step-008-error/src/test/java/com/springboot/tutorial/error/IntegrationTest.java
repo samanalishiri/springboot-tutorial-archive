@@ -1,8 +1,11 @@
 package com.springboot.tutorial.error;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -14,13 +17,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.IOException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = ErrorApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationTest {
+
+    public final Logger logger = LoggerFactory.getLogger(IntegrationTest.class.getSimpleName());
 
     @LocalServerPort
     private int port;
@@ -39,15 +43,16 @@ public class IntegrationTest {
     }
 
     @Test
-    public void test002() throws IOException {
+    public void indexController() {
 
-        ResponseEntity<String> response = testRestTemplate.exchange(
-                "http://localhost:" + port + "/",
-                HttpMethod.GET,
-                new HttpEntity<>(headers),
-                String.class);
+        String url = "http://localhost:" + port + "/";
 
-        System.out.println("Test:" + response.getBody());
+        ResponseEntity<String> response = testRestTemplate.exchange(url, HttpMethod.GET,
+                new HttpEntity<>(headers), String.class);
+
+        Assert.assertEquals("RuntimeException", response.getBody());
+
+        logger.info(String.format("request(/): %s", response.getBody()));
     }
 
 }

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> exception(HttpServletRequest request, Throwable ex) {
-        return new ResponseEntity<String>("ex.getMessage = " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<String> runtimeException(HttpServletRequest request, Throwable ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
