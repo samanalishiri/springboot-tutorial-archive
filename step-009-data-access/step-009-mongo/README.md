@@ -5,6 +5,7 @@
 
 ### Connect from CMD
     run mongo.exe
-    after successful connect to server, print test on console (test is default database), then you shuld run following command:
+after successful connect to server, print test on console (test is default database), then you shuld run following command:
+   
     cmd: use step009
     cmd: db.user.find() 
