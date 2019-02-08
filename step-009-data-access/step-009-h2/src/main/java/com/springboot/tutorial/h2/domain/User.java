@@ -26,7 +26,7 @@ public class User {
     @Column(name = "EMAIL")
     private String email;
 
-    public static User create() {
+    public static User createEmptyUser() {
         return new User();
     }
 

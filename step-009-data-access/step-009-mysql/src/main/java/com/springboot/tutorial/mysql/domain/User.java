@@ -1,4 +1,4 @@
-package com.springboot.tutorial.h2.domain;
+package com.springboot.tutorial.mysql.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,12 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
-
-/**
- * @author Saman Alishiri
- * @mail samanalishiri@gmail.com
- * @since yyyy-MM-dd
- */
 
 @Entity
 @Table(name = "USER_INFO")
@@ -32,7 +26,7 @@ public class User {
     @Column(name = "EMAIL")
     private String email;
 
-    public static User create() {
+    public static User createEmptyUser() {
         return new User();
     }
 

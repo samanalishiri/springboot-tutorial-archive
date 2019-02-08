@@ -3,7 +3,9 @@ package com.springboot.tutorial.redis.domain;
 public class Model {
 
     private long id;
+
     private String name;
+
     private String email;
 
     public long getId() {

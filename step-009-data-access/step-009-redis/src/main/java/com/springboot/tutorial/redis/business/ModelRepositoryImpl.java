@@ -11,8 +11,8 @@ import java.util.Map;
  
 @Repository
 public class ModelRepositoryImpl implements ModelRepository {
- 
-	private static final String KEY = "Model";
+
+	private static final String KEY = Model.class.getSimpleName();
  
 	private RedisTemplate<String, Object> redisTemplate;
 
@@ -34,7 +34,7 @@ public class ModelRepositoryImpl implements ModelRepository {
 	}
  
 	@Override
-	public Model find(Long id) {
+	public Model findById(Long id) {
 		return hashOperations.get(KEY, id);
 	}
  
