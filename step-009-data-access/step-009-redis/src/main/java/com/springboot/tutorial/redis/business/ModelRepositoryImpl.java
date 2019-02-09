@@ -12,7 +12,7 @@ import java.util.Map;
 @Repository
 public class ModelRepositoryImpl implements ModelRepository {
 
-	private static final String KEY = Model.class.getSimpleName();
+	private static final String KEY = "Model";
  
 	private RedisTemplate<String, Object> redisTemplate;
 

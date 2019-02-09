@@ -1,6 +1,8 @@
 package com.springboot.tutorial.redis.domain;
 
-public class Model {
+import java.io.Serializable;
+
+public class Model implements Serializable {
 
     private long id;
 
