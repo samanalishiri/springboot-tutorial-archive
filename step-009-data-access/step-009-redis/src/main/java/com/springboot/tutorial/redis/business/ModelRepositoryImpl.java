@@ -4,53 +4,54 @@ import com.springboot.tutorial.redis.domain.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.Map;
- 
-@Repository
-public class ModelRepositoryImpl implements ModelRepository {
 
-	private static final String KEY = "Model";
- 
-	private RedisTemplate<String, Object> redisTemplate;
+@org.springframework.stereotype.Repository
+public class ModelRepositoryImpl implements Repository<String, Model> {
 
-	private HashOperations<String, Long, Model> hashOperations;
- 
-	@Autowired
-	public ModelRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
-		this.redisTemplate = redisTemplate;
-	}
- 
-	@PostConstruct
-	private void init() {
-		hashOperations = redisTemplate.opsForHash();
-	}
- 
-	@Override
-	public void save(Model customer) {
-		hashOperations.put(KEY, customer.getId(), customer);
-	}
- 
-	@Override
-	public Model findById(Long id) {
-		return hashOperations.get(KEY, id);
-	}
- 
-	@Override
-	public Map<Long, Model> findAll() {
-		return hashOperations.entries(KEY);
-	}
- 
-	@Override
-	public void update(Model customer) {
-		hashOperations.put(KEY, customer.getId(), customer);
-	}
- 
-	@Override
-	public void delete(Long id) {
-		hashOperations.delete(KEY, id);
-	}
- 
+    private static final String KEY = "Model-5";
+
+    private RedisTemplate<String, Object> redisTemplate;
+
+    private HashOperations<String, String, Model> commandHashOperations;
+    private HashOperations<String, String, Map> queryHashOperations;
+
+    @Autowired
+    public ModelRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
+    @PostConstruct
+    private void init() {
+        commandHashOperations = redisTemplate.opsForHash();
+        queryHashOperations = redisTemplate.opsForHash();
+    }
+
+    @Override
+    public void save(Model m) {
+        commandHashOperations.put(KEY, m.getId(), m);
+    }
+
+    @Override
+    public Model findById(String id) {
+        return Model.of(queryHashOperations.get(KEY, id));
+    }
+
+    @Override
+    public Map<String, Model> findAll() {
+        return null;
+    }
+
+    @Override
+    public void update(Model m) {
+        commandHashOperations.put(KEY, m.getId(), m);
+    }
+
+    @Override
+    public void delete(String id) {
+        commandHashOperations.delete(KEY, id);
+    }
+
 }

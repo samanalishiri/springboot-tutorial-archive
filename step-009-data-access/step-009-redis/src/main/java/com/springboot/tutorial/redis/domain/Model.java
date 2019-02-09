@@ -1,21 +1,27 @@
 package com.springboot.tutorial.redis.domain;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class Model implements Serializable {
 
-    private long id;
+    private String id;
 
     private String name;
 
     private String email;
 
-    public long getId() {
-        return id;
+    public static Model of(Map<String, Object> map) {
+        Model model = new Model();
+        model.setId(String.valueOf(map.get("id")));
+        model.setName(String.valueOf(map.get("name")));
+        model.setEmail(String.valueOf(map.get("email")));
+
+        return model;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -34,12 +40,12 @@ public class Model implements Serializable {
         this.email = email;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Model{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "{" + "id:" + id + ", name:'" + name + '\'' + ", email:'" + email + '\'' + '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.springboot.tutorial.redis;
 
-import com.springboot.tutorial.redis.business.ModelRepository;
+import com.springboot.tutorial.redis.business.Repository;
 import com.springboot.tutorial.redis.domain.Model;
 import org.junit.After;
 import org.junit.Assert;
@@ -20,7 +20,7 @@ public class ModelRepositoryTest {
     public final Logger logger = LoggerFactory.getLogger(ModelRepositoryTest.class.getSimpleName());
 
     @Autowired
-    public ModelRepository repository;
+    public Repository repository;
 
     @Before
     public void setUp() {
@@ -30,7 +30,7 @@ public class ModelRepositoryTest {
     @Test
     public void saveModelTest() {
         Model model = new Model();
-        model.setId(1L);
+        model.setId("1");
         model.setName("Saman Alishiri");
         model.setEmail("samanalishiri@gmail.com");
         repository.save(model);
@@ -38,7 +38,7 @@ public class ModelRepositoryTest {
 
     @After
     public void tearDown() throws Exception {
-        Model model = repository.findById(1L);
+        Model model = repository.findById("1");
         Assert.assertNotNull(model);
 
         logger.info(model.toString());
