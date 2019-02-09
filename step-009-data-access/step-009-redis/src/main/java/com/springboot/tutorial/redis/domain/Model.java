@@ -1,7 +1,6 @@
 package com.springboot.tutorial.redis.domain;
 
 import java.io.Serializable;
-import java.util.Map;
 
 public class Model implements Serializable {
 
@@ -10,15 +9,6 @@ public class Model implements Serializable {
     private String name;
 
     private String email;
-
-    public static Model of(Map<String, Object> map) {
-        Model model = new Model();
-        model.setId(String.valueOf(map.get("id")));
-        model.setName(String.valueOf(map.get("name")));
-        model.setEmail(String.valueOf(map.get("email")));
-
-        return model;
-    }
 
     public String getId() {
         return id;

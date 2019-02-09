@@ -1,6 +1,6 @@
 package com.springboot.tutorial.redis;
 
-import com.springboot.tutorial.redis.business.Repository;
+import com.springboot.tutorial.redis.business.CrudRepository;
 import com.springboot.tutorial.redis.domain.Model;
 import org.junit.After;
 import org.junit.Assert;
@@ -20,7 +20,7 @@ public class ModelRepositoryTest {
     public final Logger logger = LoggerFactory.getLogger(ModelRepositoryTest.class.getSimpleName());
 
     @Autowired
-    public Repository repository;
+    public CrudRepository repository;
 
     @Before
     public void setUp() {

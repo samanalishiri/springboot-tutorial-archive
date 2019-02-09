@@ -4,7 +4,7 @@ import com.springboot.tutorial.redis.domain.Model;
 
 import java.util.Map;
 
-public interface Repository<ID, M> {
+public interface CrudRepository<ID, M> {
 
     void save(M m);
 

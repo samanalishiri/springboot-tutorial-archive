@@ -1,57 +1,51 @@
 package com.springboot.tutorial.redis.business;
 
 import com.springboot.tutorial.redis.domain.Model;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.hash.HashMapper;
+import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import java.util.AbstractMap;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-@org.springframework.stereotype.Repository
-public class ModelRepositoryImpl implements Repository<String, Model> {
+@Repository
+public class ModelRepositoryImpl implements CrudRepository<String, Model> {
 
-    private static final String KEY = "Model-5";
+    private static final String KEY = "Model";
 
-    private RedisTemplate<String, Object> redisTemplate;
+    @Resource(name = "redisTemplate")
+    private HashOperations<String, String, Map> hashOperations;
 
-    private HashOperations<String, String, Model> commandHashOperations;
-    private HashOperations<String, String, Map> queryHashOperations;
-
-    @Autowired
-    public ModelRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
-
-    @PostConstruct
-    private void init() {
-        commandHashOperations = redisTemplate.opsForHash();
-        queryHashOperations = redisTemplate.opsForHash();
-    }
+    private HashMapper<Model, String, Object> mapper = new ModelHashMapper();
 
     @Override
     public void save(Model m) {
-        commandHashOperations.put(KEY, m.getId(), m);
+        hashOperations.put(KEY, m.getId(), mapper.toHash(m));
     }
 
     @Override
     public Model findById(String id) {
-        return Model.of(queryHashOperations.get(KEY, id));
+        return mapper.fromHash(hashOperations.get(KEY, id));
     }
 
     @Override
     public Map<String, Model> findAll() {
-        return null;
+        return hashOperations.entries(KEY).entrySet().stream()
+                .map(e -> new HashMap.SimpleEntry<String, Model>(e.getKey(), mapper.fromHash(e.getValue())))
+                .collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, AbstractMap.SimpleEntry::getValue));
     }
 
     @Override
     public void update(Model m) {
-        commandHashOperations.put(KEY, m.getId(), m);
+        hashOperations.put(KEY, m.getId(), mapper.toHash(m));
     }
 
     @Override
     public void delete(String id) {
-        commandHashOperations.delete(KEY, id);
+        hashOperations.delete(KEY, id);
     }
 
 }
