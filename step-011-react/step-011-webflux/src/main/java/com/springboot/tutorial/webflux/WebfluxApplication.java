@@ -11,10 +11,10 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-public class Application {
+public class WebfluxApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(WebfluxApplication.class, args);
     }
 
     @Bean

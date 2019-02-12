@@ -20,18 +20,13 @@ export class UserShowComponent implements OnInit {
 
   deleteUser(id) {
     this.http.delete('http://localhost:8080/user/delete/' + id)
-      .subscribe(res => {
-          this.router.navigate(['/user']);
-        }, (err) => {
-          console.log(err);
-        }
+      .subscribe(res => this.router.navigate(['/user']),
+        (err) => console.log(err)
       );
   }
 
   getUser(id) {
-    this.http.get('http://localhost:8080/user/read/' + id).subscribe(data => {
-      this.user = data;
-    });
+    this.http.get('http://localhost:8080/user/read/' + id).subscribe(data => this.user = data);
   }
 
 }

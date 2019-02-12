@@ -20,20 +20,12 @@ export class UserEditComponent implements OnInit {
   }
 
   getUser(id) {
-    this.http.get('http://localhost:8080/user/read/' + id).subscribe(data => {
-      this.user = data;
-    });
+    this.http.get('http://localhost:8080/user/read/' + id).subscribe(data => this.user = data);
   }
 
   updateUser(id, data) {
     this.http.put('http://localhost:8080/user/update', this.user)
-      .subscribe(res => {
-          let id = res['id'];
-          this.router.navigate(['/user']);
-        }, (err) => {
-          console.log(err);
-        }
-      );
+      .subscribe(res => this.router.navigate(['/user']), (err) => console.log(err));
   }
 
 }
