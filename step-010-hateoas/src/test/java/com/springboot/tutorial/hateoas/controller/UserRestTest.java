@@ -2,6 +2,7 @@ package com.springboot.tutorial.hateoas.controller;
 
 import com.springboot.tutorial.hateoas.BaseTest;
 import com.springboot.tutorial.hateoas.domain.User;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +22,6 @@ import java.util.stream.Stream;
 @RunWith(SpringRunner.class)
 public class UserRestTest extends BaseTest {
 
-    public static final String FIND_BY_ID_URL = "http://localhost:8080/user/find/{id}";
-
     private TestRestTemplate testRestTemplate;
 
     private HttpHeaders headers;
@@ -41,17 +40,18 @@ public class UserRestTest extends BaseTest {
 
         String userId = "1";
         ResponseEntity<String> response = testRestTemplate.exchange(
-                FIND_BY_ID_URL,
+                "http://localhost:8080/user/find/{id}",
                 HttpMethod.GET,
                 new HttpEntity<>(headers),
                 String.class,
                 userId);
 
-        notNull(response);
+        Assert.assertNotNull(response);
 
         User user = getData(response, User.class);
-        notNull(user);
-        print(user);
+        Assert.assertNotNull(user);
+
+        log(user);
     }
 
 }

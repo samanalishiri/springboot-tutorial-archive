@@ -1,6 +1,7 @@
 package com.springboot.tutorial.hateoas;
 
 import com.springboot.tutorial.hateoas.domain.User;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +42,11 @@ public class IntegrationTest extends BaseTest {
 
     @Test
     public void test001() {
-        User user = User.create().setId(1L).setUsername("Sample-1").setPassword("User-1").setEmail("sampleuser1@gmail.com");
+        User user = User.create()
+                .setId(1L)
+                .setUsername("samanalishiri")
+                .setPassword("password")
+                .setEmail("samanalishiri@gmail.como");
 
         HttpEntity<User> entity = new HttpEntity<>(user, headers);
 
@@ -63,11 +68,12 @@ public class IntegrationTest extends BaseTest {
                 String.class,
                 userId);
 
-        notNull(response);
+        Assert.assertNotNull(response);
 
         User user = getData(response, User.class);
-        notNull(user);
-        print(user);
+        Assert.assertNotNull(user);
+
+        log(user);
     }
 
 }
