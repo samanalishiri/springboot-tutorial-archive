@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {WebsocketListenerComponent} from "../websocket/websocket-listener/websocket-listener.component";
 
 @Component({
   selector: 'app-user',
@@ -14,6 +15,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/user/read/all').subscribe(data => this.users = data);
+    new WebsocketListenerComponent();
+    // this.http.get('http://localhost:8080/user/read/all').subscribe(data => this.users = data);
   }
 }
